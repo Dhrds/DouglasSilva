@@ -4,7 +4,14 @@
     /* background-color: aqua;*/
 padding: 50px;
 }
-body{
+.conteiner{
+    padding: 0px;
+    border: 0px;
+    margin: 0px;
+    width: 45%;
+    position: absolute;
+    left: 0%;
+    top: 50px;
     background:linear-gradient(90deg ,rgb(2, 0, 97) 0% , rgb(1, 255, 242) 100%)
 }
 .titulo{
@@ -12,12 +19,18 @@ body{
     color: aliceblue;
     position: absolute;
     top: 30%;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    
-
+    font-family: Georgia, 'Times New Roman', Times, serif;  
 }
 .conteiner{
     display: flex;
+}
+.navbar{
+    width: 130%;
+    height: 50px;
+    background-color: white;
+    box-shadow: 5px 5px 5px;
+    position: absolute;
+    top: 0%;
 }
 
 
