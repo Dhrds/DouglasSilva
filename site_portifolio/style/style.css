@@ -1,9 +1,4 @@
-.div-foto{
-    width: 300px;
-    height: 300px;
-    /* background-color: aqua;*/
-padding: 50px;
-}
+
 .conteiner_0{
     height: 1500px;
     background-color: aliceblue;
@@ -34,15 +29,13 @@ padding: 50px;
 }
 .span_bar{
     position: fixed;
-    top: 12px;
     left: 20%;
     font-size: 40px;
-    fo
     font-style: italic;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: rgb(0, 0, 0);
 }
-.conteiner{
+.conteiner_1{
     width: 45%;
     height: 800px;
     position: absolute;
@@ -54,19 +47,21 @@ padding: 50px;
     font-size:50px;
     color: aliceblue;
     position: absolute;
-    top: 30%;
+    top: 40%;
     font-family: Georgia, 'Times New Roman', Times, serif;  
 }
-.conteiner{
-    display: flex;
-}
-
-
 
 .foto{
-    width: 300px;
-    height: 300px;     
+    width: 100px;
+    height: 100px;     
     border-radius: 100%;
     position: absolute;
-    top: 15%;
+    top: 10%;
+    left: 155PX;
+}
+.div-foto{
+    width: 300px;
+    height: 300px;
+    /* background-color: aqua;*/
+padding: 50px;
 }
