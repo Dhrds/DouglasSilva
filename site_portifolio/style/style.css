@@ -4,11 +4,47 @@
     /* background-color: aqua;*/
 padding: 50px;
 }
+.conteiner_0{
+    height: 1500px;
+    background-color: aliceblue;
+}
+.canva{
+    position: absolute;
+    left: 55%;
+    top: 150px;
+    width: 375px;
+    height: 550px;
+    background: linear-gradient(0deg , rgb(0, 174, 255) 0% ,teal 100%);
+}
+.navbar{
+    width: 130%;
+    height: 75px;
+    background-color: white;
+    box-shadow: 5px 5px 5px rgb(185, 180, 180);
+    position: fixed;
+    left: -10%;
+    top: 0%;
+}
+.logo_bar{
+    height: 65px;
+    position: fixed;
+    left: 5%;
+    top: 5px;
+
+}
+.span_bar{
+    position: fixed;
+    top: 12px;
+    left: 20%;
+    font-size: 40px;
+    fo
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(0, 0, 0);
+}
 .conteiner{
-    padding: 0px;
-    border: 0px;
-    margin: 0px;
     width: 45%;
+    height: 800px;
     position: absolute;
     left: 0%;
     top: 50px;
@@ -24,14 +60,7 @@ padding: 50px;
 .conteiner{
     display: flex;
 }
-.navbar{
-    width: 130%;
-    height: 50px;
-    background-color: white;
-    box-shadow: 5px 5px 5px;
-    position: absolute;
-    top: 0%;
-}
+
 
 
 .foto{
