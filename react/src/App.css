@@ -23,7 +23,6 @@
   color: rgb(0, 0, 0);
 }
 .container_0{
-  /* background-color: brown; */
   width: 100%;
   height: 800px;
   display: grid;
@@ -35,24 +34,21 @@
   width: 350px;
   background: linear-gradient(0deg, rgb(0, 174, 255) 0%, teal 100%);
 }
-.canvas_2{
-  
+.canvas_2{  
   width: 350px;
   height: 550px;
-  
   background-color: rgb(255, 255, 255);
-
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: large;
 }
 .container_2{
   position: absolute;
   max-width: 750px; 
   display:grid;
   grid-template-columns:  auto auto;
-
   width: 70%;
   left: 25%;
   top: 150px; 
-  /* background-color:red ;  */
   }
 
 .container_1 {
@@ -61,6 +57,8 @@
 }
 
 .tittle {
+  position: absolute;
+  top: 40% ;
 
   font-size: 40px;
   color: aliceblue;
@@ -69,14 +67,14 @@
   /* background-color: blueviolet; */
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
-.tittle1{
-  position: absolute;
-  top: 50% ;
-}
-.subtitulo {
 
+.subtitulo {
+  width: 100%;
+  position: relative;
+  top: 60px;
   font-size: 25px;
   color: aliceblue;
+  /* background-color: black; */
   position: absolute;
   text-align: center;
   top: 80%;
@@ -89,7 +87,7 @@
   border-radius: 100%;
   position: absolute;
   top: 10%;
-  left: 12.5% ;
+  left: 20% ;
 }
 
 .footcanva {
@@ -112,6 +110,14 @@ width: 40px;
   height: 50px;
   top: 2.5px;
 }
+.span_1{
+  font-size: 30px;
+}
+
+
+
+
+
 @media (max-width: 768px){
   .canvas_2{
   position: absolute;

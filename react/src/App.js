@@ -20,15 +20,18 @@ function App() {
               <img className="foto_1" src={Teste} alt="perfil" />
               <div className="tittle">
                 <h1 className="tittle1">Douglas Silva</h1>
-                <p className='subtitulo'>Desenvolvedor</p>
+                
               </div>
+              <div className='subtitulo'>Desenvolvedor</div>
               <footer children="canvas" className='footcanva'>
                 <a href='https://www.linkedin.com/in/douglas-silva-122aa01b6/'> <img src={lin} className='lin' /></a>
                 <a href='https://wa.me/5537999775765'> <img src={what} className='what' /></a>
               </footer>
             </div>
             <div className='canvas_2 '>
-              <span>Sobre mim</span>
+              <span className='span_1'> Olá Mundo</span>
+              <p></p>
+              <span> Um pouco sobre mim</span>
             </div>
           </div>
         </section>
