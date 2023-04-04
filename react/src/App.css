@@ -11,66 +11,77 @@
   top: 0%;
   z-index: 1;
 }
+
 .logo_bar {
-   height: 65px;
-   z-index: 2;
-   padding: 5px;
-  position:relative;
+  height: 65px;
+  z-index: 2;
+  padding: 5px;
+  position: relative;
   left: 30%;
 
 }
+
 .titulo_bar {
   text-align: center;
   align-items: center;
   font-size: 40px;
-  font-style: italic;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  display: flex;
+  font-family: emoji;
   color: rgb(0, 0, 0);
 }
-.menu{
-  background-color: rgb(220, 173, 173);
+
+.menu {
+  /* background-color: rgb(220, 173, 173); */
   display: grid;
-  grid-template-columns: auto auto auto auto ;
+  grid-template-columns: auto auto auto auto;
   text-align: center;
   align-items: center;
+  
+
+  font-size: 30px;
+  font-family: emoji;
 }
-.container_0{
+
+.container_0 {
   width: 100%;
   height: 800px;
   display: grid;
   grid-template-columns: 45% auto;
 }
+
 .canvas {
   position: relative;
   height: 550px;
   width: 350px;
   background: linear-gradient(0deg, rgb(0, 174, 255) 0%, teal 100%);
 }
-.canvas_2{  
+
+.canvas_2 {
   width: 350px;
   height: 550px;
   background-color: rgb(255, 255, 255);
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: large;
 }
-.container_2{
+
+.container_2 {
   position: absolute;
-  max-width: 750px; 
-  display:grid;
-  grid-template-columns:  auto auto;
+  max-width: 750px;
+  display: grid;
+  grid-template-columns: auto auto;
   width: 70%;
   left: 25%;
-  top: 150px; 
-  }
+  top: 150px;
+}
 
 .container_1 {
-  height: 100vh; 
+  height: 100vh;
   background: linear-gradient(90deg, rgb(2, 0, 97) 0%, rgb(1, 255, 242) 100%)
 }
 
 .tittle {
   position: absolute;
-  top: 40% ;
+  top: 40%;
 
   font-size: 40px;
   color: aliceblue;
@@ -99,7 +110,7 @@
   border-radius: 100%;
   position: absolute;
   top: 10%;
-  left: 20% ;
+  left: 20%;
 }
 
 .footcanva {
@@ -109,42 +120,52 @@
   position: absolute;
   bottom: 0;
 }
-.lin{
+
+.lin {
   position: absolute;
   left: 25%;
   top: 7.5px;
-width: 40px;
-  
+  width: 40px;
+
 }
-.what{
+
+.what {
   position: absolute;
   right: 25%;
   height: 50px;
   top: 2.5px;
 }
-.span_1{
+
+.span_1 {
   font-size: 30px;
 }
 
-.section2{
+.section2 {
   height: 100vh;
   width: 100%;
   background-color: black;
   position: absolute;
   top: 100vh;
 }
-
-
-
-
-@media (max-width: 768px){
-  .canvas_2{
-  position: absolute;
-  left: 350px;
-  width: 150px;
-  height: 550px;
-  background-color: rgb(255, 255, 255);
-
+#section3{
+  top: 200vh;
+  background-color: blueviolet;
 }
+
+#section4{
+  top: 300vh;
+  background-color: aqua;
+}
+
+
+@media (max-width: 768px) {
+  .canvas_2 {
+    position: absolute;
+    left: 350px;
+    width: 150px;
+    height: 550px;
+    background-color: rgb(255, 255, 255);
+
+  }
 
 }
