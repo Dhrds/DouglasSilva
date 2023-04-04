@@ -8,8 +8,16 @@ function App() {
     <div className="App">
       <header className="App-header navbar">
         <img className="logo_bar" src={Teste} alt="perfil" />
-        <div className="titulo_bar">
-          Douglas
+        <div className="titulo_bar">   Douglas    </div>
+        <div className='menu'>
+          <div className='home'>Home</div>
+
+          <div className='habilidade'>Habilidade</div>
+
+          <div className='experiencias'>experiencias</div>
+
+          <div className='projetos'>Projetos</div>
+
         </div>
       </header>
       <main>
@@ -17,12 +25,14 @@ function App() {
           <div className="container_1" />
           <div className='container_2'>
             <div className="canvas ">
+              <a href='#section2'>
               <img className="foto_1" src={Teste} alt="perfil" />
+              </a>
               <div className="tittle">
                 <h1 className="tittle1">Douglas Silva</h1>
                 
               </div>
-              <div className='subtitulo'>Desenvolvedor</div>
+              <div className='subtitulo'>Desenvolvedor</ div>
               <footer children="canvas" className='footcanva'>
                 <a href='https://www.linkedin.com/in/douglas-silva-122aa01b6/'> <img src={lin} className='lin' /></a>
                 <a href='https://wa.me/5537999775765'> <img src={what} className='what' /></a>
@@ -35,6 +45,7 @@ function App() {
             </div>
           </div>
         </section>
+        <section className='section2' id='section2'></section>
       </main>
       {/* <footer>
       </footer> */}
