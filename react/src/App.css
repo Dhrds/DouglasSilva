@@ -1,12 +1,11 @@
 .navbar {
   width: 105%;
-  height: 75px;
+  height: 15vh;
   background-color: white;
   box-shadow: 5px 5px 5px rgb(185, 180, 180);
   position: fixed;
   display: grid;
   grid-template-columns: 20vw 20vw 60vw;
-
   left: -1%;
   top: 0%;
   z-index: 1;
@@ -15,7 +14,7 @@
 .logo_bar {
   height: 65px;
   z-index: 2;
-  padding: 5px;
+  padding: 10px;
   position: relative;
   left: 30%;
 
@@ -32,6 +31,7 @@
 
 .menu {
   /* background-color: rgb(220, 173, 173); */
+  width: 80%;
   display: grid;
   grid-template-columns: auto auto auto auto;
   text-align: center;

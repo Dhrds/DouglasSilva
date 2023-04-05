@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import lin from ".//in.png"
 import what from ".//wh.png"
-import Teste from ".//teste.png"
+import Teste from ".//2.jpg"
 function App() {
   return (
     <div className="App">
