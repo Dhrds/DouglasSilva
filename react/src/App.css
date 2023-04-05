@@ -9,24 +9,29 @@
   left: -1%;
   top: 0%;
   z-index: 1;
+  justify-content: center;
+  text-align: center;
 }
 
 .logo_bar {
-  height: 65px;
+  height: 12vh;
   z-index: 2;
-  padding: 10px;
+  justify-content: center;
   position: relative;
-  left: 30%;
+  top: 1.5vh; 
 
 }
 
 .titulo_bar {
   text-align: center;
   align-items: center;
-  font-size: 40px;
+  font-size: 6vh;
   display: flex;
   font-family: emoji;
   color: rgb(0, 0, 0);
+  position: absolute;
+  top: 4.5vh;
+  left: 5%;
 }
 
 .menu {
@@ -38,7 +43,7 @@
   align-items: center;
   
 
-  font-size: 30px;
+  font-size: 6vh;
   font-family: emoji;
 }
 
