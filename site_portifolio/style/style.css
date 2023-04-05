@@ -1,22 +1,27 @@
 .navbar {
     width: 105%;
     height: 15vh;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     box-shadow: 5px 5px 5px rgb(185, 180, 180);
-    position: fixed;
+    position: static;
     display: grid;
     grid-template-columns: 20vw 20vw 60vw;
     left: -1%;
     top: 0%;
     z-index: 1;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    flex-wrap: wrap-reverse;
   }
   
   .logo_bar {
-    height: 65px;
+    height: 12vh;
     z-index: 2;
-    padding: 10px;
-    position: relative;
-    left: 30%;
+    /* padding: 10px; */
+    justify-content: center;
+    /* position: relative; */
+    /* left: 0%; */
   
   }
   
