@@ -1,38 +1,73 @@
-.App {
+.conteiner {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(rgb(41, 41, 41),rgb(47, 207, 224));
+
+}
+.title{
+  font-size: 85px;
+  color: white;
+  animation: fliptitle 1.5s;
+}
+.user{
+  width: 350px;
+  height: 30px;
+  border-radius: 5px;
+  border: 0;
+  margin: 5px;
+  outline: none;
+  color: #FFF;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-left: 3px;
   text-align: center;
 }
+.senha{
+  width: 350px;
+  height: 30px;
+  border-radius: 5px;
+  border: 0;
+  margin: 5px;
+  outline: none;
+  color: #FFF;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.button-login{
+  width: 50px;
+  border: 0;
+  background-color: transparent;
+  cursor:pointer;
+
+
+}
+
+
+
+ @keyframes fliptitle {
+  from{
+    transform: rotateX(90deg);
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  to{
+    transform: rotateX(0deg);
   }
-  to {
-    transform: rotate(360deg);
+ }
+@media (max-width:360px) {
+  .title{
+    font-size: 50px;
+  }
+  .user{
+    width: 230px;
+    
+  }
+  .senha{
+    width: 230px;
+    
+  
   }
 }

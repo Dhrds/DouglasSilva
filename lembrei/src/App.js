@@ -1,24 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import { AiOutlineCheck } from 'react-icons/ai';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="conteiner">
+      <h1 className='title'>Lembrei</h1>
+      <input className='user' type="text"
+        placeholder='usuario' />
+      
+        <input className='senha' type="password"
+          placeholder='senha' />
+        <button className='button-login'>
+          <AiOutlineCheck size={25} color='#000'></AiOutlineCheck>
+        </button>
+     
+      <main>
+        <h2>Bem vindo</h2>
+
+      </main>
+
+
+
     </div>
+
   );
 }
 
