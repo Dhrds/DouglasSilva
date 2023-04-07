@@ -1,13 +1,26 @@
 import './App.css';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { useState} from 'react';
+import api from './services/api';
 
 function App() {
 
   const [input,setInput] =useState ('')
+  const [input2,setInput2] =useState ('')
+  async function login(){
+    if(input===""){
+      alert('vazio')
+      return;
+    }
+    try {
+      const response = await api.get('login/' + input + '/' + input2);
+      console.log(response.data)
+      alert("ok")
+    }
+    catch{
+      alert("erro")
 
-  function login(){
-    alert( `Seja bem vindo ${input}`)
+    }
   }
 
   return (
@@ -19,7 +32,9 @@ function App() {
         onChange={(e)=>setInput(e.target.value)}/>
       
         <input className='senha' type="password"
-          placeholder='senha' />
+          placeholder='senha' 
+          value={input2} 
+        onChange={(e)=>setInput2(e.target.value)}/>
         <button className='button-login' onClick={login}>
           <AiOutlineCheck size={25} color='#000'></AiOutlineCheck>
           
