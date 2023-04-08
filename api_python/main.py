@@ -1,6 +1,11 @@
 from fastapi import FastAPI
 
 
+#  pip install uvicorn.
+#  Aqui é que vamos utilizar o uvicorn. Dentro do terminal você vai colocar o seguinte código: uvicorn + o nome do seu arquivo + : + o nome do seu aplicativo + –reload.
+# uvicorn main:app –reload.
+
+
 app=FastAPI()
 login={
     'teste':'123'
