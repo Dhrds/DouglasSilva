@@ -1,9 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import bd_lembrei as bd
 
 #  pip install uvicorn.
 #  Aqui é que vamos utilizar o uvicorn. Dentro do terminal você vai colocar o seguinte código: uvicorn + o nome do seu arquivo + : + o nome do seu aplicativo + –reload.
-# uvicorn main:app –reload.
+# uvicorn main:app --reload
 origins = ['http://localhost:3000']
 
 
@@ -36,8 +37,13 @@ def checklogin(idu:str , ids:str):
         else:
             return "False"
     
-@app.post("/login/{idu}/{ids}")
+@app.post("/cadastro/{idu}/{ids}")
 def cadastrar(idu:str , ids:str):
+    bd.conexao()
+    tabela = 'lembrei'
+    colunas = '"numero","usuario","senha"'
+    values='"+5537999775765","{idu}","{ids}"'
+    bd.insert_bd(tabela,colunas,values)
     login[idu]=ids
     return login
 

@@ -37,7 +37,7 @@ async function cadastrar(){
   }
   try {
 
-    const response = await api.post('login/' + input3 + '/' + input4);
+    const response = await api.post('cadastro/' + input3 + '/' + input4);
     console.log(response.data)
     if (response.data === "True") {
       alert("ok logado")
