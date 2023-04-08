@@ -40,3 +40,5 @@ def checklogin(idu:str , ids:str):
 def cadastrar(idu:str , ids:str):
     login[idu]=ids
     return login
+
+

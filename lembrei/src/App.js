@@ -19,7 +19,7 @@ function App() {
 
       const response = await api.get('login/' + input + '/' + input2);
       console.log(response.data)
-      if (response.data == "True") {
+      if (response.data === "True") {
         alert("ok logado")
       }
       alert("ok")
@@ -39,7 +39,7 @@ async function cadastrar(){
 
     const response = await api.post('login/' + input3 + '/' + input4);
     console.log(response.data)
-    if (response.data == "True") {
+    if (response.data === "True") {
       alert("ok logado")
     }
     alert("ok")
