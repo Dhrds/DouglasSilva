@@ -9,6 +9,7 @@ function App() {
   const [input2, setInput2] = useState('')
   const [input3, setInput3] = useState('')
   const [input4, setInput4] = useState('')
+  const [input5, setInput5] = useState('')
 
   async function login() {
     if (input === "") {
@@ -30,25 +31,25 @@ function App() {
     }
   }
 
-async function cadastrar(){
-  if (input3 === "") {
-    alert('vazio')
-    return;
-  }
-  try {
-
-    const response = await api.post('cadastro/' + input3 + '/' + input4);
-    console.log(response.data)
-    if (response.data === "True") {
-      alert("ok logado")
+  async function cadastrar() {
+    if (input3 === "") {
+      alert('vazio')
+      return;
     }
-    alert("ok")
-  }
-  catch {
-    alert("erro")
+    try {
 
+      const response = await api.post('cadastro/' + input3 + '/' + input4 + '/' + input5);
+      console.log(response.data)
+      if (response.data === "True") {
+        alert("ok logado")
+      }
+      alert("ok")
+    }
+    catch {
+      alert("erro")
+
+    }
   }
-}
 
 
 
@@ -69,7 +70,7 @@ async function cadastrar(){
 
       </button>
 
-      <main>
+      <main className='cadastro'>
         <h2>cadastrar</h2>
         <input type="text"
           placeholder='novo usuario'
@@ -79,9 +80,12 @@ async function cadastrar(){
           placeholder='nova senha'
           value={input4}
           onChange={(e) => setInput4(e.target.value)} />
-          <button className='button-cadastrar' onClick={cadastrar}>
-        <AiOutlineCheck size={25} color='#000'></AiOutlineCheck></button>
-
+        <input type="text"
+          placeholder='telefone'
+          value={input5}
+          onChange={(e) => setInput5(e.target.value)} />
+        <button className='button-cadastrar' onClick={cadastrar}>
+          <AiOutlineCheck size={25} color='#000'></AiOutlineCheck></button>
 
       </main>
 

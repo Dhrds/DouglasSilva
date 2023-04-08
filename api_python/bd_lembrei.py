@@ -42,8 +42,32 @@ class insert_bd():
         except Error as e:
             print("Erro ao conectar ao MySQL", e)
 
-conexao()
-tabela = 'lembrei'
-colunas = 'numero,usuario,senha'
-values='"+5537999775765","teste21","123"'
-insert_bd.insert(table=tabela,lista_coluna=colunas,lista_values=values)
+class select_bd():
+    def select (table):
+        try:
+           if connection.is_connected():  
+              cursor.execute("use lembrei")
+              print(f"""select * from {table}  """)            
+              cursor.execute(f"""select * from {table}  """)    
+              db_inf = cursor.fetchall()                                        
+              print('selecionado',db_inf)
+              return db_inf
+        except Error as e:
+            print("Erro ao conectar ao MySQL", e)
+            
+class delete_bd():
+    def delete (table,id):
+        try:
+           if connection.is_connected():  
+              cursor.execute("use lembrei")
+              print(f"""select * from {table} where id = {id} """)            
+              cursor.execute(f"""select * from {table} where id = {id}  """)    
+              db_inf = cursor.fetchall()    
+              connection.commit()                                   
+              print('selecionado',db_inf)
+              return db_inf
+        except Error as e:
+            print("Erro ao conectar ao MySQL", e)           
+            
+if __name__ == "__main__":
+    print  ('ok')
