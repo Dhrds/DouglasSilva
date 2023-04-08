@@ -41,9 +41,9 @@ def checklogin(idu:str , ids:str):
 def cadastrar(idu:str , ids:str):
     bd.conexao()
     tabela = 'lembrei'
-    colunas = '"numero","usuario","senha"'
+    colunas = 'numero,usuario,senha'
     values='"+5537999775765","{idu}","{ids}"'
-    bd.insert_bd(tabela,colunas,values)
+    bd.insert_bd.insert(tabela,colunas,values)
     login[idu]=ids
     return login
 

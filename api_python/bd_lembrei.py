@@ -33,8 +33,10 @@ class encerra():
 class insert_bd():   
     def insert(table,lista_coluna,lista_values):
         try:
-           if connection.is_connected():              
-              cursor.execute(f"""insert into {table} (id ,{lista_coluna}) values (11,{lista_values}); """)
+           if connection.is_connected():  
+              cursor.execute("use lembrei")
+              print(f"""insert into {table} ({lista_coluna}) values (11,{lista_values}); """)            
+              cursor.execute(f"""insert into {table} ({lista_coluna}) values ({lista_values}); """)
               connection.commit()
               print('comitado')
         except Error as e:
@@ -42,6 +44,6 @@ class insert_bd():
 
 conexao()
 tabela = 'lembrei'
-colunas = '"numero","usuario","senha"'
-values='"+5537999775765","teste2","123"'
+colunas = 'numero,usuario,senha'
+values='"+5537999775765","teste21","123"'
 insert_bd.insert(table=tabela,lista_coluna=colunas,lista_values=values)
