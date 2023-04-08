@@ -31,9 +31,22 @@ function App() {
   }
 
 async function cadastrar(){
-  if (input === "") {
+  if (input3 === "") {
     alert('vazio')
     return;
+  }
+  try {
+
+    const response = await api.post('login/' + input3 + '/' + input4);
+    console.log(response.data)
+    if (response.data == "True") {
+      alert("ok logado")
+    }
+    alert("ok")
+  }
+  catch {
+    alert("erro")
+
   }
 }
 
