@@ -25,7 +25,7 @@ def home():
 
 @app.get("/login/{idu}/{ids}")
 def checklogin(idu:str , ids:str):
-    login= bd.select_bd.select('lembrei')
+    login= bd.select('lembrei')
     bd.encerra   
     for i in login:
         print(i)
@@ -45,7 +45,7 @@ def cadastrar(idu:str , ids:str,tel:int):
     tabela = 'lembrei'
     colunas = 'numero,usuario,senha'
     values=f'"+55{tel}","{idu}","{ids}"'
-    bd.insert_bd.insert(tabela,colunas,values)
+    bd.insert(tabela,colunas,values)
     bd.encerra
     return login
 
@@ -53,6 +53,6 @@ def cadastrar(idu:str , ids:str,tel:int):
 def cadmsg(msg:str):
     bd.conexao()
     parametro_mensagem = msg
-    bd.insert_bd.insert(parametro_mensagem)
+    bd.insert(parametro_mensagem)
     
 
