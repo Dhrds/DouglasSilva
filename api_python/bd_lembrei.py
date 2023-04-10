@@ -8,26 +8,36 @@ connection = mysql.connector.connect(host="localhost",
   
 cursor = connection.cursor()
 
-class conexao():   
-    def __init__(self):
-        try:
-           if connection.is_connected():              
-              cursor.execute("select database();")
-              db_inf = cursor.fetchone()
-              print("Você está conectado ao banco de dados: ", db_inf)
-        except Error as e:
-            print("Erro ao conectar ao MySQL", e)
   
-class encerra():
-    def __init__(self):
-        try:
-           if connection.is_connected():              
-              cursor.close()              
-              connection.close()
-              print('conexão encerrada')
-              
-        except Error as e:
-            print("Erro ao conectar ao MySQL", e)
+def conexao():
+    connection = mysql.connector.connect(host="localhost",
+                                    user="root",
+                                    password="123456",
+                                    db="Lembrei")
+    cursor = connection.cursor()
+    try:
+        if connection.is_connected():  
+            cursor = connection.cursor()            
+            cursor.execute("select database();")
+            db_inf = cursor.fetchone()
+            print("Você está conectado ao banco de dados: ", db_inf)
+        else:
+            print('nao conectou')
+    except Error as e:
+        print("Erro ao conectar ao MySQL", e)
+  
+
+def encerra():
+    try:
+        if connection.is_connected():              
+            cursor.close()              
+            connection.close()
+            print('conexão encerrada')
+        else:
+            print('nao conectou')
+            
+    except Error as e:
+        print("Erro ao conectar ao MySQL", e)
 
 
 
@@ -44,6 +54,11 @@ def insert(table,lista_coluna,lista_values):
 
 
 def select (table):
+    connection = mysql.connector.connect(host="localhost",
+                                    user="root",
+                                    password="123456",
+                                    db="Lembrei")
+    cursor = connection.cursor()
     try:
         if connection.is_connected():  
             cursor.execute("use lembrei")
@@ -52,10 +67,17 @@ def select (table):
             db_inf = cursor.fetchall()                                        
             print('selecionado',db_inf)
             return db_inf
+        else:
+            print('nao')
     except Error as e:
         print("Erro ao conectar ao MySQL", e)
             
 def select_data (table):
+    connection = mysql.connector.connect(host="localhost",
+                                    user="root",
+                                    password="123456",
+                                    db="Lembrei")
+    cursor = connection.cursor()
     try:
         if connection.is_connected():  
             cursor.execute("use lembrei") 
