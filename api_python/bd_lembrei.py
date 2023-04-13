@@ -52,6 +52,16 @@ def insert(table,lista_coluna,lista_values):
     except Error as e:
         print("Erro ao conectar ao MySQL", e)
 
+def insert_log_data(table,lista_coluna,lista_values):
+    try:
+        if connection.is_connected():  
+            cursor.execute("use lembrei")
+            print(f"""insert into {table} ({lista_coluna}) values ({lista_values}); """)            
+            cursor.execute(f"""insert into {table} ({lista_coluna}) values ({lista_values}); """)
+            connection.commit()
+            print('comitado')
+    except Error as e:
+        print("Erro ao conectar ao MySQL", e)
 
 def select (table):
     connection = mysql.connector.connect(host="localhost",
@@ -83,9 +93,7 @@ def select_data (table):
             cursor.execute("use lembrei") 
             cursor.execute("""select  DATE_FORMAT(data_hora,'%Y/%m/%d %T') 
                            from parametros_mensagem 
-                           where data_hora = date_format(now(), '%Y-%m-%d  %H:%i');""")           
-            #cursor.execute("""SELECT DATE_FORMAT(data_hora,'%Y/%m/%d %T') as data_f FROM parametros_mensagem """)  
-            #select id_usuario, DATE_FORMAT(data_hora,'%Y/%m/%d %T') from parametros_mensagem where data_hora =   date_format(now(), '%Y-%m-%d  %H:%i');  
+                           where data_hora = date_format(now(), '%Y-%m-%d  %H:%i');""")            
             db_inf = cursor.fetchall()                                        
             print(db_inf)
             return db_inf

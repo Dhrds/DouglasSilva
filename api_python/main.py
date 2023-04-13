@@ -1,9 +1,15 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import bd_lembrei as bd
-
+from pydantic import BaseModel 
 #  pip install uvicorn.
 # uvicorn main:app --reload
+
+class Usuario(BaseModel):
+    name: str
+    description: str 
+    price: float
+    tax: float 
 
 origins = ['http://localhost:3000']
 
@@ -54,5 +60,10 @@ def cadmsg(msg:str):
     bd.conexao()
     parametro_mensagem = msg
     bd.insert(parametro_mensagem)
+    
+@app.post("teste")
+async def teste(usuario:Usuario):
+    print(usuario)
+    return usuario
     
 

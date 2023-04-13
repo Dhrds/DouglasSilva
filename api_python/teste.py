@@ -1,4 +1,3 @@
-
 import bd_lembrei as bd
 import time as timesleep
 
