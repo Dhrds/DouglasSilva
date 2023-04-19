@@ -5,7 +5,7 @@ import time as timesleep
 import bd_lembrei as bd
 import smtplib
 server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-server.login("dhrds1996@gmail.com", "nxvkihjumvsthhto")
+server.login("dhrds1996@gmail.com", "")
 mensagem = "teste"
 
 while True:
