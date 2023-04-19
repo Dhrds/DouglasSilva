@@ -52,6 +52,26 @@ def insert(table,lista_coluna,lista_values):
     except Error as e:
         print("Erro ao conectar ao MySQL", e)
 
+def insert_usuario(lista_values):
+    connection = mysql.connector.connect(host="localhost",
+                                    user="root",
+                    
+                                    password="123456",
+                                    db="Lembrei")
+    cursor = connection.cursor()
+    try:
+        if connection.is_connected():  
+            cursor.execute("use lembrei")
+            print(f"""insert into lembrei (numero,usuario,senha,email) values {lista_values}; """)           
+            cursor.execute(f"""insert into lembrei (numero,usuario,senha,email) values {lista_values}; """)
+            connection.commit()
+            cursor.close()              
+            connection.close()
+            print('comitado')
+            
+    except Error as e:
+        print("Erro ao conectar ao MySQL", e)
+
 def insert_log_data(table,lista_coluna,lista_values):
     try:
         if connection.is_connected():  
@@ -81,10 +101,31 @@ def select (table):
             print('nao')
     except Error as e:
         print("Erro ao conectar ao MySQL", e)
+        
+       
+def select_usuario (table):
+    connection = mysql.connector.connect(host="localhost",
+                                    user="root",
+                                    password="123456",
+                                    db="Lembrei")
+    cursor = connection.cursor()
+    try:
+        if connection.is_connected():  
+            cursor.execute("use lembrei")
+            print(f"""select * from lembrei where usuario,senha,email """)            
+            cursor.execute(f"""select * from {table}  """)    
+            db_inf = cursor.fetchall()                                        
+            print('selecionado',db_inf)
+            return db_inf
+        else:
+            print('nao')
+    except Error as e:
+        print("Erro ao conectar ao MySQL", e)        
             
 def select_data (table):
     connection = mysql.connector.connect(host="localhost",
                                     user="root",
+                    
                                     password="123456",
                                     db="Lembrei")
     cursor = connection.cursor()

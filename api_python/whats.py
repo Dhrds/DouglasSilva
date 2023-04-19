@@ -6,10 +6,10 @@ import bd_lembrei as bd
 import smtplib
 server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
 server.login("dhrds1996@gmail.com", "nxvkihjumvsthhto")
+mensagem = "teste"
 
 while True:
     bd.conexao()
-
 
     print(1)
     msg = bd.select_data('parametros_mensagem')
@@ -22,7 +22,7 @@ while True:
             k.press_and_release('enter')
             server.sendmail(
              "dhrds1996@gmail.com",
-             "destinatario@gmail.com",
+             "guilhermesemusa@gmail.com",
              f"{mensagem}")
     timesleep.sleep (35)
     
