@@ -1,15 +1,12 @@
-from fastapi import FastAPI , status
+from fastapi import FastAPI, status, Response
 from fastapi.middleware.cors import CORSMiddleware
 import bd_lembrei as bd
-from pydantic import BaseModel 
+from pydantic import BaseModel
 import uvicorn
-#  pip install uvicorn.
-# uvicorn main:app --reload
-
 
 origins = ['http://localhost:3000']
 
-app=FastAPI()
+app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
@@ -18,20 +15,22 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-login={
+login = {
 }
+
 
 @app.get("/")
 def home():
     return "minha api esta no ar"
 
-@app.get("/login/{idu}/{ids}")
-def checklogin(idu:str , ids:str):
-    login= bd.select('lembrei')
-    bd.encerra   
+
+@app.get("/usuario/{idu}/{ids}")
+def checklogin(idu: str, ids: str):
+    login = bd.select('lembrei')
+    bd.encerra
     for i in login:
         print(i)
-        if idu == i[2] :
+        if idu == i[2]:
             print(i[2])
             if ids == i[3]:
                 print('logado')
@@ -40,35 +39,24 @@ def checklogin(idu:str , ids:str):
                 return login
         else:
             return login
-    
-@app.post("/cadastro/{idu}/{ids}/{tel}")
-def cadastrar(idu:str , ids:str,tel:int):
-    bd.conexao()
-    tabela = 'lembrei'
-    colunas = 'numero,usuario,senha'
-    values=f'"+55{tel}","{idu}","{ids}"'
-    bd.insert(tabela,colunas,values)
-    bd.encerra
-    return login
 
-@app.post("usuario/msg/{msg}")
-def cadmsg(msg:str):
-    bd.conexao()
-    parametro_mensagem = msg
-    bd.insert(parametro_mensagem)
-    
+
 class Usuario(BaseModel):
     numero: str
-    usuario: str 
+    usuario: str
     senha: str
-    email: str 
-    
+    email: str
+
+
 @app.post("/usuario", status_code=status.HTTP_201_CREATED)
-async def teste(usuario:Usuario):    
-    insert = usuario.numero,usuario.usuario,usuario.senha,usuario.email
-    bd.insert_usuario(insert)
-    return usuario
-    
+async def cadastro(usuario: Usuario,response: Response):
+    insert = usuario.numero, usuario.usuario, usuario.senha, usuario.email
+    try:
+        resp = bd.insert_usuario(insert)
+        response.status_code = status.HTTP_201_CREATED
+        return resp 
+    except:
+       return "error: Ocorreu um erro ao inserir o registro"
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)

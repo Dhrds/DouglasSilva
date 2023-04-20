@@ -7,8 +7,7 @@ connection = mysql.connector.connect(host="localhost",
                                     db="Lembrei")
   
 cursor = connection.cursor()
-
-  
+ 
 def conexao():
     connection = mysql.connector.connect(host="localhost",
                                     user="root",
@@ -25,7 +24,6 @@ def conexao():
             print('nao conectou')
     except Error as e:
         print("Erro ao conectar ao MySQL", e)
-  
 
 def encerra():
     try:
@@ -38,8 +36,6 @@ def encerra():
             
     except Error as e:
         print("Erro ao conectar ao MySQL", e)
-
-
 
 def insert(table,lista_coluna,lista_values):
     try:
@@ -62,15 +58,14 @@ def insert_usuario(lista_values):
     try:
         if connection.is_connected():  
             cursor.execute("use lembrei")
-            print(f"""insert into lembrei (numero,usuario,senha,email) values {lista_values}; """)           
+            #print(f"""insert into lembrei (numero,usuario,senha,email) values {lista_values}; """)           
             cursor.execute(f"""insert into lembrei (numero,usuario,senha,email) values {lista_values}; """)
             connection.commit()
             cursor.close()              
             connection.close()
-            print('comitado')
-            
+            return 'comitado'            
     except Error as e:
-        print("Erro ao conectar ao MySQL", e)
+        return "usuario ou email ja usado", e
 
 def insert_log_data(table,lista_coluna,lista_values):
     try:
@@ -101,9 +96,8 @@ def select (table):
             print('nao')
     except Error as e:
         print("Erro ao conectar ao MySQL", e)
-        
-       
-def select_usuario (table):
+     
+def select_usuario (user):
     connection = mysql.connector.connect(host="localhost",
                                     user="root",
                                     password="123456",
@@ -112,8 +106,8 @@ def select_usuario (table):
     try:
         if connection.is_connected():  
             cursor.execute("use lembrei")
-            print(f"""select * from lembrei where usuario,senha,email """)            
-            cursor.execute(f"""select * from {table}  """)    
+            print(f"""select numero , email from lembrei where id = {user} """)            
+            cursor.execute(f"""select numero , email from lembrei where id = {user}  """)    
             db_inf = cursor.fetchall()                                        
             print('selecionado',db_inf)
             return db_inf
@@ -124,15 +118,14 @@ def select_usuario (table):
             
 def select_data (table):
     connection = mysql.connector.connect(host="localhost",
-                                    user="root",
-                    
+                                    user="root",                    
                                     password="123456",
                                     db="Lembrei")
     cursor = connection.cursor()
     try:
         if connection.is_connected():  
             cursor.execute("use lembrei") 
-            cursor.execute("""select  DATE_FORMAT(data_hora,'%Y/%m/%d %T') 
+            cursor.execute("""select  DATE_FORMAT(data_hora,'%Y/%m/%d %T') ,id_usuario
                            from parametros_mensagem 
                            where data_hora = date_format(now(), '%Y-%m-%d  %H:%i');""")            
             db_inf = cursor.fetchall()                                        

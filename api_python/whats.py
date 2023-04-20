@@ -5,7 +5,7 @@ import time as timesleep
 import bd_lembrei as bd
 import smtplib
 server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-server.login("dhrds1996@gmail.com", "nxvkihjumvsthhto")
+server.login("douglas.silvateste01@gmail.com", "jmtwbzwroentjugs")
 mensagem = "teste"
 
 while True:
@@ -16,14 +16,23 @@ while True:
     print(msg,1)
     for i in msg :
         if  msg != '[]':
-            print('ok')
-            pywhatkit.sendwhatmsg_instantly ("+5537999775765", f"{mensagem}",10)
-            timesleep.sleep(5)
-            k.press_and_release('enter')
-            server.sendmail(
-             "dhrds1996@gmail.com",
-             "guilhermesemusa@gmail.com",
-             f"{mensagem}")
+            try:
+                print(type(msg))
+                user = msg[0][1]
+                print(user)
+                info = bd.select_usuario(user)
+                email = info[0][1]
+                tel = info[0][0]
+                pywhatkit.sendwhatmsg_instantly (tel, f"{mensagem}",10)
+                timesleep.sleep(5)
+                k.press_and_release('enter')
+                server.sendmail(
+                "douglas.silvateste01@gmail.com",
+                email,
+                f"{mensagem}")
+                server.quit()
+            except:
+                print('deu erro')
     timesleep.sleep (35)
     
     
