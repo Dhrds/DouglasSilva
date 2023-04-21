@@ -24,21 +24,6 @@ def home():
     return "minha api esta no ar"
 
 
-@app.get("/usuario/{idu}/{ids}")
-def checklogin(idu: str, ids: str):
-    login = bd.select('lembrei')
-    bd.encerra
-    for i in login:
-        print(i)
-        if idu == i[2]:
-            print(i[2])
-            if ids == i[3]:
-                print('logado')
-                return login
-            else:
-                return login
-        else:
-            return login
 
 
 class Usuario(BaseModel):
@@ -46,7 +31,21 @@ class Usuario(BaseModel):
     usuario: str
     senha: str
     email: str
-
+    
+@app.get("/usuario")
+def checklogin(usuario:Usuario):
+    login = bd.select('lembrei')
+    for i in login:
+        print(i)
+        print(usuario.usuario)
+        if usuario.usuario == i[2]:
+            print(i[2])
+            if usuario.senha == i[3]:
+                return 'logado'
+            else:
+                return 'email ou senha invalidoa'
+        else:
+            return 'email ou senha invalidow'
 
 @app.post("/usuario", status_code=status.HTTP_201_CREATED)
 async def cadastro(usuario: Usuario,response: Response):
@@ -59,4 +58,4 @@ async def cadastro(usuario: Usuario,response: Response):
        return "error: Ocorreu um erro ao inserir o registro"
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=8000 )
