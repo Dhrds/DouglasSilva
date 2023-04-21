@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import bd_lembrei as bd
 from pydantic import BaseModel
 import uvicorn
+# uvicorn main:app --reload
 
 origins = ['http://localhost:3000']
 
@@ -57,5 +58,5 @@ async def cadastro(usuario: Usuario,response: Response):
     except:
        return "error: Ocorreu um erro ao inserir o registro"
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000 )
+# if __name__ == "__main__":
+#     uvicorn.run(app, host="127.0.0.1", port=8000 )
