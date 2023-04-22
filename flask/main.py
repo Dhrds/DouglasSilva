@@ -22,7 +22,7 @@ def login():
     login = bd.select_usuario_login(email,senha)
     if login != []:
         print(3)
-        return render_template("index.html")
+        return request.url_root('http://127.0.0.1:5000/#paralogin')
     else:
         print(4)
         return render_template("index.html")        
