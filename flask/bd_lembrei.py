@@ -74,6 +74,7 @@ def insert_usuario(lista_values):
             return True
     except Error as e:
         print("usuario ou email ja usado", e)
+        return "usuario ou email ja usado"
 
 
 def insert_log_data(table, lista_coluna, lista_values):
@@ -172,7 +173,7 @@ def select_usuario_login(email, senha):
         if connection.is_connected():
             cursor.execute("use lembrei")
             cursor.execute(
-                f"""select * from lembrei where email = '{email}' and senha = '{senha}'  """)
+                f"""select id from lembrei where email = '{email}' and senha = '{senha}'  """)
             db_inf = cursor.fetchall()
             print(db_inf)
             return db_inf
@@ -180,6 +181,53 @@ def select_usuario_login(email, senha):
             print('nao')
     except Error as e:
         print("Erro ao conectar ao MySQL", e)
+        
+def select_msg(id):
+    connection = mysql.connector.connect(host="localhost",
+                                         user="root",
+                                         password="123456",
+                                         db="Lembrei")
+    cursor = connection.cursor()
+    try:
+        if connection.is_connected():
+            cursor.execute("use lembrei")
+            cursor.execute(
+                f"""select p.data_hora,p.email,p.numero,p.mensagem_aparecer 
+                from parametros_mensagem p
+                where id_usuario = {id}  """)
+            db_inf = cursor.fetchall()
+            print(db_inf)
+            return db_inf
+        else:
+            print('nao')
+    except Error as e:
+        print("Erro ao conectar ao MySQL", e)
+
+def insert_msg(lista_values):
+    connection = mysql.connector.connect(host="localhost",
+                                         user="root",
+
+                                         password="123456",
+                                         db="Lembrei")
+    cursor = connection.cursor()
+    try:
+        if connection.is_connected():
+            cursor.execute("use lembrei")
+            print(f"""insert into parametros_mensagem (id_usuario,data_hora,email, numero,mensagem_aparecer) values {lista_values} ; """)
+            cursor.execute(
+                f"""insert into parametros_mensagem
+                (id_usuario,data_hora,email, numero,mensagem_aparecer)
+                values {lista_values} ; """)
+            connection.commit()
+            cursor.close()
+            connection.close()
+            print('comitado')
+            return True
+    except Error as e:
+        print("usuario ou email ja usado", e)
+        return "usuario ou email ja usado"
+
+
 
 if __name__ == "__main__":
     print('ok')
