@@ -126,11 +126,28 @@ def select_data (table):
         if connection.is_connected():  
             cursor.execute("use lembrei") 
             cursor.execute("""select  DATE_FORMAT(data_hora,'%Y/%m/%d %T') ,id_usuario
+                           , mensagem_aparecer,numero,email,e_rotina,id
                            from parametros_mensagem 
-                           where data_hora = date_format(now(), '%Y-%m-%d  %H:%i');""")            
+                           where data_hora = date_format(now(), '%Y-%m-%d  %H:%i') and e_rotina = 'N';""")            
             db_inf = cursor.fetchall()                                        
             print(db_inf)
             return db_inf
+    except Error as e:
+        print("Erro ao conectar ao MySQL", e)
+        
+def alterar(id):
+    connection = mysql.connector.connect(host="localhost",
+                                    user="root",                    
+                                    password="123456",
+                                    db="Lembrei")
+    cursor = connection.cursor()
+    try:
+        if connection.is_connected():  
+            cursor.execute("use lembrei") 
+            cursor.execute(f"""update parametros_mensagem set e_rotina = 'S' where id = {id};""")            
+            db_inf = cursor.fetchall()                                        
+            connection.commit()
+            print('comitado')
     except Error as e:
         print("Erro ao conectar ao MySQL", e)
 

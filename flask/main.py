@@ -6,18 +6,19 @@ iduser = 0
 
 import mysql.connector
 from mysql.connector import Error
+import time
 
 
 class bd():
     def select_usuario_login(email, senha):
-        connection = mysql.connector.connect(host="containers-us-west-87.railway.app:7991",
+        connection = mysql.connector.connect(host="localhost",
                                              user="root",
-                                             password="aQG6PErjX4rFHnWY9Ocp",
-                                             db="railway")
+                                             password="123456",
+                                             db="lembrei")
         cursor = connection.cursor()
         try:
             if connection.is_connected():
-                cursor.execute("use railway")
+                cursor.execute("use lembrei")
                 cursor.execute(
                     f"""select id from lembrei where email = '{email}' and senha = '{senha}'  """)
                 db_inf = cursor.fetchall()
@@ -29,14 +30,14 @@ class bd():
             print("Erro ao conectar ao MySQL", e)
 
     def select_msg(id):
-        connection = mysql.connector.connect(host="containers-us-west-87.railway.app:7991",
+        connection = mysql.connector.connect(host="localhost",
                                              user="root",
-                                             password="aQG6PErjX4rFHnWY9Ocp",
-                                             db="railway")
+                                             password="123456",
+                                             db="lembrei")
         cursor = connection.cursor()
         try:
             if connection.is_connected():
-                cursor.execute("use railway")
+                cursor.execute("use lembrei")
                 cursor.execute(
                     f"""select p.data_hora,p.email,p.numero,p.mensagem_aparecer 
                     from parametros_mensagem p
@@ -50,14 +51,14 @@ class bd():
             print("Erro ao conectar ao MySQL", e)
 
     def insert_msg(lista_values):
-        connection = mysql.connector.connect(host="containers-us-west-87.railway.app:7991",
+        connection = mysql.connector.connect(host="localhost",
                                              user="root",
-                                             password="aQG6PErjX4rFHnWY9Ocp",
-                                             db="railway")
+                                             password="123456",
+                                             db="lembrei")
         cursor = connection.cursor()
         try:
             if connection.is_connected():
-                cursor.execute("use railway")
+                cursor.execute("use lembrei")
                 print(
                     f"""insert into parametros_mensagem (id_usuario,data_hora,email, numero,mensagem_aparecer) values {lista_values} ; """)
                 cursor.execute(
@@ -74,14 +75,14 @@ class bd():
             return "usuario ou email ja usado"
 
     def insert_usuario(lista_values):
-        connection = mysql.connector.connect(host="containers-us-west-87.railway.app:7991",
+        connection = mysql.connector.connect(host="localhost",
                                                 user="root",
-                                                password="aQG6PErjX4rFHnWY9Ocp",
-                                                db="railway")
+                                                password="123456",
+                                                db="lembrei")
         cursor = connection.cursor()
         try:
             if connection.is_connected():
-                cursor.execute("use railway")
+                cursor.execute("use lembrei")
                 cursor.execute(
                     f"""insert into lembrei (numero,usuario,senha,email) values {lista_values}; """)
                 connection.commit()
@@ -100,10 +101,11 @@ def login():
     email = request.form.get('email_cad')
     numero = request.form.get('tel_cad')
     cad = (numero, usuario, senha, email)
+    print(cad)
     if cad != (None, None, None, None):
         check = bd.insert_usuario(cad)
         if check == True:
-            return redirect('/home')
+            return redirect('/#paralogin')
         else:
             return render_template("index.html", msg=check)
     return render_template("index.html")
@@ -157,4 +159,4 @@ def contatos():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
