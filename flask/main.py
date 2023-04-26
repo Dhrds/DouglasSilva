@@ -11,14 +11,14 @@ import time
 
 class bd():
     def select_usuario_login(email, senha):
-        connection = mysql.connector.connect(host="localhost",
-                                             user="root",
-                                             password="123456",
-                                             db="lembrei")
+        connection = mysql.connector.connect(host="projetospark.com.br",
+                                             user="u751391022_douglas",
+                                             password="Admin123456",
+                                             db="u751391022_douglas")
         cursor = connection.cursor()
         try:
             if connection.is_connected():
-                cursor.execute("use lembrei")
+                cursor.execute("use u751391022_douglas")
                 cursor.execute(
                     f"""select id from lembrei where email = '{email}' and senha = '{senha}'  """)
                 db_inf = cursor.fetchall()
@@ -30,14 +30,14 @@ class bd():
             print("Erro ao conectar ao MySQL", e)
 
     def select_msg(id):
-        connection = mysql.connector.connect(host="localhost",
-                                             user="root",
-                                             password="123456",
-                                             db="lembrei")
+        connection = mysql.connector.connect(host="projetospark.com.br",
+                                             user="u751391022_douglas",
+                                             password="Admin123456",
+                                             db="u751391022_douglas")
         cursor = connection.cursor()
         try:
             if connection.is_connected():
-                cursor.execute("use lembrei")
+                cursor.execute("use u751391022_douglas")
                 cursor.execute(
                     f"""select p.data_hora,p.email,p.numero,p.mensagem_aparecer 
                     from parametros_mensagem p
@@ -51,14 +51,14 @@ class bd():
             print("Erro ao conectar ao MySQL", e)
 
     def insert_msg(lista_values):
-        connection = mysql.connector.connect(host="localhost",
-                                             user="root",
-                                             password="123456",
-                                             db="lembrei")
+        connection = mysql.connector.connect(host="projetospark.com.br",
+                                             user="u751391022_douglas",
+                                             password="Admin123456",
+                                             db="u751391022_douglas")
         cursor = connection.cursor()
         try:
             if connection.is_connected():
-                cursor.execute("use lembrei")
+                cursor.execute("use u751391022_douglas")
                 print(
                     f"""insert into parametros_mensagem (id_usuario,data_hora,email, numero,mensagem_aparecer) values {lista_values} ; """)
                 cursor.execute(
@@ -75,14 +75,14 @@ class bd():
             return "usuario ou email ja usado"
 
     def insert_usuario(lista_values):
-        connection = mysql.connector.connect(host="localhost",
-                                                user="root",
-                                                password="123456",
-                                                db="lembrei")
+        connection = mysql.connector.connect(host="projetospark.com.br",
+                                                user="u751391022_douglas",
+                                                password="Admin123456",
+                                                db="u751391022_douglas")
         cursor = connection.cursor()
         try:
             if connection.is_connected():
-                cursor.execute("use lembrei")
+                cursor.execute("use u751391022_douglas")
                 cursor.execute(
                     f"""insert into lembrei (numero,usuario,senha,email) values {lista_values}; """)
                 connection.commit()
@@ -118,6 +118,7 @@ def autent():
     login = bd.select_usuario_login(email, senha)
     if login != []:
         global iduser
+        print (login[0])
         iduser = login[0][0]
         return redirect('/home')
     else:
@@ -159,4 +160,4 @@ def contatos():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()

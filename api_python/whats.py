@@ -3,13 +3,13 @@ import pyautogui as a
 import keyboard as k
 import time as timesleep
 import bd_lembrei as bd
-import smtplib
-server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-server.login("douglas.silvateste01@gmail.com", "rigaqztdnmozfjmd")
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+
+key = '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'
+
 
 while True:
-    bd.conexao()
-
     print(1)
     msg = bd.select_data('parametros_mensagem')
     print(msg,1)
@@ -30,24 +30,20 @@ while True:
                 timesleep.sleep(10)
                 k.press_and_release('enter')
                 bd.alterar(id)
-                server.sendmail(
-                "douglas.silvateste01@gmail.com",
-                email_env,
-                f"{msg_env}")
-                server.quit()
+                message = Mail(
+                from_email='douglas.silvateste01@gmail.com',
+                to_emails=email_env,
+                subject=msg_env,
+                html_content=f'<strong>{msg_env}</strong>')
+                try:
+                    sg = SendGridAPIClient(key)
+                    response = sg.send(message)
+                    print(response.status_code)
+                    print(response.body)
+                    print(response.headers)
+                except Exception as e:
+                    print(e.message)   
+                
             except:
                 print('deu erro')
     timesleep.sleep (5)
-    
-    
-    
-
-
-# server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-# server.login("dhrds1996@gmail.com", "")
-
-# server.sendmail(
-#   "dhrds1996@gmail.com",
-#   "destinatario@gmail.com",
-#   f"{mensagem}")
-# server.quit()
