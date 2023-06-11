@@ -107,7 +107,7 @@ def select_usuario (user):
         if connection.is_connected():  
             cursor.execute("use u751391022_douglas")
             print(f"""select numero , email from lembrei where id = {user} """)            
-            cursor.execute(f"""select numero , email from lembrei where id = {user} and e_rotina <> 'S' """)    
+            cursor.execute(f"""select numero , email from lembrei where id = {user}  """)    
             db_inf = cursor.fetchall()                                        
             print('selecionado',db_inf)
             return db_inf
@@ -128,7 +128,7 @@ def select_data (table):
             cursor.execute("""select  DATE_FORMAT(data_hora,'%Y/%m/%d %T') ,id_usuario
                            , mensagem_aparecer,numero,email,e_rotina,id
                            from parametros_mensagem 
-                           where data_hora = date_format(now(), '%Y-%m-%d  %H:%i') and e_rotina = 'N';""")            
+                            where data_hora = date_format(DATE_SUB(now(), INTERVAL 3 HOUR), '%Y/%m/%d  %H:%i');""")            
             db_inf = cursor.fetchall()                                        
             print(db_inf)
             return db_inf

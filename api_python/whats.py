@@ -31,12 +31,13 @@ while True:
                 k.press_and_release('enter')
                 bd.alterar(id)
                 message = Mail(
-                from_email='douglas.silvateste01@gmail.com',
+                from_email='dhrds1996@gmail.com',
                 to_emails=email_env,
                 subject=msg_env,
                 html_content=f'<strong>{msg_env}</strong>')
                 try:
                     sg = SendGridAPIClient(key)
+                    
                     response = sg.send(message)
                     print(response.status_code)
                     print(response.body)
@@ -46,4 +47,4 @@ while True:
                 
             except:
                 print('deu erro')
-    timesleep.sleep (5)
+    timesleep.sleep (30)
